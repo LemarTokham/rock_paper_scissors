@@ -1,26 +1,38 @@
 console.log("Hello, World!");
 function getComputerChoice() {
-    const choices = ["Rock", "Paper", "Scissors"];
+    const choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random()* 3)];
 }
 
 function getPlayerChoice(playerSelection, computerSelection) {
     if (computerSelection === playerSelection) {
-        console.log("Draw")
-    } else if (computerSelection == "Rock" && playerSelection == "Paper") {
-        console.log("You Win, Computer chose Rock")
-    } else if (computerSelection == "Rock" && playerSelection == "Scissors") {
-        console.log("You Lose, Computer chose Rock");
-    } else if (computerSelection == "Paper" && playerSelection == "Scissors") {
-        console.log("You Win, Computer chose Paper");
-    } else if (computerSelection == "Paper" && playerSelection == "Rock") {
-        console.log("You Lose, Computer chose Paper");
-    } else if (computerSelection == "Scissors" && playerSelection == "Paper") {
-        console.log("You Lose, Computer chose Scissors");
-    } else if (computerSelection == "Scissors" && playerSelection == "Rock") {
-        console.log("You Win, Computer chose Scissors");
-    } 
+        return "Draw"
+    } else if (computerSelection == "rock" && playerSelection == "paper") {
+        return "You Win, Computer chose Rock";
+    } else if (computerSelection == "rock" && playerSelection == "scissors") {
+        return "You Lose, Computer chose Rock";
+    } else if (computerSelection == "paper" && playerSelection == "scissors") {
+        return "You Win, Computer chose Paper";
+    } else if (computerSelection == "paper" && playerSelection == "rock") {
+        return "You Lose, Computer chose Paper";
+    } else if (computerSelection == "scissors" && playerSelection == "paper") {
+        return "You Lose, Computer chose Scissors";
+    } else if (computerSelection == "scissors" && playerSelection == "rock") {
+        return "You Win, Computer chose Scissors";
+    } else {
+        return "Invalid please try again!" + playerSelection + computerSelection;
+    }
 }
 
-let userChoice = prompt("Choice: ")
-getPlayerChoice(userChoice, getComputerChoice())
+
+
+function game() {
+    for (i = 0; i < 5; i ++) {
+        let user_choice = prompt("Chouice: ").toLowerCase()
+        let computerChoice = getComputerChoice()
+        let game_result = getPlayerChoice(user_choice, computerChoice)
+        console.log(game_result)
+    }
+}
+
+game()
